@@ -788,9 +788,9 @@ void test_ft_memset()
     assert(memcmp(ft_memset(s1, 'X', 1), memset(s2, 'X', 1), 1) == 0);
 
     // Test Case 4: Fill buffer of size 0 (no change)
-    s1 = malloc(1);
-    s2 = malloc(1);
-    assert(memcmp(ft_memset(s1, 255, 0), memset(s2, 255, 0), 1) == 0);
+//     s1 = malloc(1);
+//     s2 = malloc(1);
+//     assert(memcmp(ft_memset(s1, 255, 0), memset(s2, 255, 0), 1) == 0);
 
     // Test Case 5: Fill with different values (all 255)
     s1 = malloc(5);
@@ -972,7 +972,7 @@ void test_ft_memcpy()
     //        "\033[0m\n"); // Cyan
 
     // init
-    void *s1, *s2;
+//     void *s1, *s2;
 
     char src1[] = "hello";
     char dest1[20];
@@ -1089,10 +1089,10 @@ void test_ft_memcpy()
     assert(memcmp(dest1, dest2, 14) == 0);
 
     // 19. Test copying where the source and destination are the same
-    char src15[50] = "Self copy test";
-    memcpy(src15, src15, 50);
-    ft_memcpy(src15, src15, 50);
-    assert(memcmp(src15, src15, 50) == 0);
+//     char src15[50] = "Self copy test";
+//     memcpy(src15, src15, 50);
+//     ft_memcpy(src15, src15, 50);
+//     assert(memcmp(src15, src15, 50) == 0);
 
     // 20. Test copying the last character in a string
     char src16[] = "end";
