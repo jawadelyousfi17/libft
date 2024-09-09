@@ -24,4 +24,4 @@ Next compile your tests/main.c
 Example
 ```sh
 gcc tests/main.c libft.a -lbsd
-```sh
+```
