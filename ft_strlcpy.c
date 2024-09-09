@@ -1,16 +1,6 @@
 #include <string.h>
 
-size_t ft_strlen(const char *s)
-{
-    size_t size;
-
-    size = 0;
-    while (s[size])
-    {
-        size++;
-    }
-    return (size);
-}
+size_t ft_strlen(const char *s);
 
 size_t ft_strlcpy(char *dst, const char *src, size_t size)
 {
