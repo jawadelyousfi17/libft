@@ -5,19 +5,16 @@ To compile and use this project, you might need to include `<bsd/string.h>`. If 
 ### Installation Instructions
 
 For Debian-based systems (e.g., Ubuntu), you can install the `libbsd` library using the following command:
-
-For macOS, you can use Homebrew:
-
-```sh
-brew install libbsd
-```
-
-for Ubuntu
 Open a terminal and run the following command:
 
    ```sh
    sudo apt-get update
    sudo apt-get install libbsd-dev
+```
+For macOS, you can use Homebrew:
+
+```sh
+brew install libbsd
 ```
 
 Next compile your tests/main.c 
