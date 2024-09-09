@@ -27,7 +27,7 @@ void loading_effect()
 }
 void test_ft_isalpha()
 {
-     printf("\033[0;36m"
+    printf("\033[0;36m"
            "Test : "
            "\033[1;37m"
            "int ft_isalpha(int c);"
@@ -49,7 +49,7 @@ void test_ft_isalpha()
 
 void test_ft_isdigit()
 {
-     printf("\033[0;36m"
+    printf("\033[0;36m"
            "Test : "
            "\033[1;37m"
            "int ft_isdigit(int c)"
@@ -64,14 +64,15 @@ void test_ft_isdigit()
         assert(ft_isdigit(c) == isdigit(c));
         c++;
     }
-     printf("\033[1;32m"
+    printf("\033[1;32m"
            "OK!"
-           "\033[0m\n");;
+           "\033[0m\n");
+    ;
 }
 
 void test_ft_isalnum()
 {
-       printf("\033[0;36m"
+    printf("\033[0;36m"
            "Test : "
            "\033[1;37m"
            "int ft_isalnum(int c)"
@@ -85,14 +86,15 @@ void test_ft_isalnum()
         assert(ft_isalnum(c) == isalnum(c));
         c++;
     }
-     printf("\033[1;32m"
+    printf("\033[1;32m"
            "OK!"
-           "\033[0m\n");;
+           "\033[0m\n");
+    ;
 }
 
 void test_ft_isascii()
 {
-       printf("\033[0;36m"
+    printf("\033[0;36m"
            "Test : "
            "\033[1;37m"
            "int ft_isascii(int c)"
@@ -104,18 +106,19 @@ void test_ft_isascii()
     int c = -1000;
     while (c <= 1000)
     {
-        //printf("C = %d Passed\n",c-1);
+        // printf("C = %d Passed\n",c-1);
         assert(ft_isascii(c) == isascii(c));
         c++;
     }
-     printf("\033[1;32m"
+    printf("\033[1;32m"
            "OK!"
-           "\033[0m\n");;
+           "\033[0m\n");
+    ;
 }
 
 void test_ft_isprint()
 {
-       printf("\033[0;36m"
+    printf("\033[0;36m"
            "Test : "
            "\033[1;37m"
            "int ft_isprint(int c)"
@@ -126,18 +129,19 @@ void test_ft_isprint()
     int c = -1;
     while (c <= 255)
     {
-        //printf("C = %d Passed\n",c-1);
+        // printf("C = %d Passed\n",c-1);
         assert(ft_isprint(c) == isprint(c));
         c++;
     }
-     printf("\033[1;32m"
+    printf("\033[1;32m"
            "OK!"
-           "\033[0m\n");;
+           "\033[0m\n");
+    ;
 }
 
 void test_ft_strlen()
 {
-       printf("\033[0;36m"
+    printf("\033[0;36m"
            "Test : "
            "\033[1;37m"
            "size_t ft_strlen(const char *s)"
@@ -158,14 +162,15 @@ void test_ft_strlen()
     assert(strlen("\n\n\n\n\\\0\n\0") == ft_strlen("\n\n\n\n\\\0\n\0"));
     assert(strlen("\n\n\n\n\\\0\n\t\r\t") == ft_strlen("\n\n\n\n\\\0\n\t\r\t"));
 
-     printf("\033[1;32m"
+    printf("\033[1;32m"
            "OK!"
-           "\033[0m");;
+           "\033[0m");
+    ;
 }
 
 void test_ft_toupper()
 {
-       printf("\033[0;36m"
+    printf("\033[0;36m"
            "Test : "
            "\033[1;37m"
            "size_t ft_strlen(const char *s)"
@@ -176,18 +181,19 @@ void test_ft_toupper()
     int c = -1;
     while (c <= 255)
     {
-        //printf("C = %d Passed\n",c-1);
+        // printf("C = %d Passed\n",c-1);
         assert(ft_toupper(c) == toupper(c));
         c++;
     }
-     printf("\033[1;32m"
+    printf("\033[1;32m"
            "OK!"
-           "\033[0m");;
+           "\033[0m");
+    ;
 }
 
 void test_ft_tolower()
 {
-     printf("\033[0;36m"
+    printf("\033[0;36m"
            "Test : "
            "\033[1;37m"
            "int ft_tolower(int c)"
@@ -198,18 +204,19 @@ void test_ft_tolower()
     int c = -1;
     while (c <= 255)
     {
-        //printf("C = %d Passed\n",c-1);
+        // printf("C = %d Passed\n",c-1);
         assert(ft_tolower(c) == tolower(c));
         c++;
     }
-     printf("\033[1;32m"
+    printf("\033[1;32m"
            "OK!"
-           "\033[0m\n");;
+           "\033[0m\n");
+    ;
 }
 
 void test_ft_strchr()
 {
-     printf("\033[0;36m"
+    printf("\033[0;36m"
            "Test : "
            "\033[1;37m"
            "char *ft_strchr(const char *s, int c)"
@@ -220,9 +227,9 @@ void test_ft_strchr()
     //         printf("\033[0;36m"
     //        "And 0 <= strlen(s) <= 100 "
     //        "\033[0m\n");
-        // printf("\033[0;36m" "Test : " "\033[1;37m" "ft_strchr(const char *s, int c)" "\033[0m\n"); // Cyan
-        // printf("\033[0;36m" "where -1 <= c <= 255 " "\033[0m\n"); // Cyan
-        // printf("\033[0;36m" "and 0 <= strlen(s) <= 100" "\033[0m\n"); // Cyan
+    // printf("\033[0;36m" "Test : " "\033[1;37m" "ft_strchr(const char *s, int c)" "\033[0m\n"); // Cyan
+    // printf("\033[0;36m" "where -1 <= c <= 255 " "\033[0m\n"); // Cyan
+    // printf("\033[0;36m" "and 0 <= strlen(s) <= 100" "\033[0m\n"); // Cyan
     int c = -1;
     while (c <= 255)
     {
@@ -236,12 +243,13 @@ void test_ft_strchr()
         loading_effect();
         c++;
     }
-    printf("\033[1;32m""OK!\n");
+    printf("\033[1;32m"
+           "OK!\n");
 }
 
 void test_ft_strrchr()
 {
-      printf("\033[0;36m"
+    printf("\033[0;36m"
            "Test : "
            "\033[1;37m"
            "char *ft_strrchr(const char *s, int c)"
@@ -253,8 +261,6 @@ void test_ft_strrchr()
     //        "And 0 <= strlen(s) <= 100 "
     //        "\033[0m\n");
 
-
-
     int c = -1;
     while (c <= 255)
     {
@@ -265,7 +271,7 @@ void test_ft_strrchr()
         assert(ft_strrchr("ljbf ijiojf kjkj , fklenkfk,ekjf", c) == strrchr("ljbf ijiojf kjkj , fklenkfk,ekjf", c));
         assert(ft_strrchr("0123456789abcdefghijklmnopqrstuvwxyz", c) == strrchr("0123456789abcdefghijklmnopqrstuvwxyz", c));
         assert(ft_strrchr("-*-/*\\", c) == strrchr("-*-/*\\", c));
-        //printf("  C = %d Passed\n", c);
+        // printf("  C = %d Passed\n", c);
         c++;
     }
     printf("\033[1;32m"
@@ -648,7 +654,7 @@ void test_ft_strlcat()
     assert(ft_strlcat(f_dst19, src19, 8) == strlcat(dst19, src19, 8));
     assert(strcmp(dst19, f_dst19) == 0);
 
-     char dst20[100] = "1337";
+    char dst20[100] = "1337";
     char f_dst20[100] = "1337";
     assert(ft_strlcat(f_dst20, f_dst20, 8) == strlcat(dst20, dst20, 8));
     assert(strcmp(f_dst20, dst20) == 0);
@@ -702,8 +708,8 @@ void test_ft_strnstr()
     assert(strnstr("abcdefgh", "efg", 8) == ft_strnstr("abcdefgh", "efg", 8));
     assert(strnstr("abcdefgh", "efg", 6) == ft_strnstr("abcdefgh", "efg", 6));
     assert(strnstr("do doodo?", "do", 8) == ft_strnstr("do doodo?", "do", 8));
-    assert(strnstr("maririmria?", "rim",11) == ft_strnstr("maririmria?", "rim",11));
-    assert(strnstr(big1, small1,1000) == ft_strnstr(big1,small1,1000));
+    assert(strnstr("maririmria?", "rim", 11) == ft_strnstr("maririmria?", "rim", 11));
+    assert(strnstr(big1, small1, 1000) == ft_strnstr(big1, small1, 1000));
     printf("\033[1;32m"
            "OK!"
            "\033[0m\n"); // Green
@@ -1098,7 +1104,6 @@ void test_ft_memcpy()
            "\033[0m\n");
 }
 
-
 void test_ft_memmove()
 {
     printf("\033[0;36m"
@@ -1111,7 +1116,7 @@ void test_ft_memmove()
     //        "\033[0m\n"); // Cyan
 
     // init
-     // 1. Basic non-overlapping copy
+    // 1. Basic non-overlapping copy
     char dest1[20] = "hello";
     char dest2[20] = "hello";
     char src1[] = "World";
@@ -1242,7 +1247,8 @@ void test_ft_memmove()
     // 19. Copying a buffer of random data
     char randSrc[50];
     char randDest1[50], randDest2[50];
-    for (int i = 0; i < 50; i++) randSrc[i] = rand() % 256;
+    for (int i = 0; i < 50; i++)
+        randSrc[i] = rand() % 256;
     memmove(randDest1, randSrc, 50);
     ft_memmove(randDest2, randSrc, 50);
     assert(memcmp(randDest1, randDest2, 50) == 0);
@@ -1258,22 +1264,21 @@ void test_ft_memmove()
            "\033[0m\n");
 }
 
-
 int main(void)
 {
-    printf("\033[1;32m" 
-    "\n\n"
-"██╗     ██╗██████╗ ███████╗████████╗\n"
-"██║     ██║██╔══██╗██╔════╝╚══██╔══╝\n"
-"██║     ██║██████╔╝█████╗     ██║   \n"
-"██║     ██║██╔══██╗██╔══╝     ██║   \n"
-"███████╗██║██████╔╝██║        ██║   \n"
-"╚══════╝╚═╝╚═════╝ ╚═╝        ╚═╝   \n"
-"                                    \n"
-"\033[0m"  // Reset color
-);
+    printf("\033[1;32m"
+           "\n\n"
+           "██╗     ██╗██████╗ ███████╗████████╗\n"
+           "██║     ██║██╔══██╗██╔════╝╚══██╔══╝\n"
+           "██║     ██║██████╔╝█████╗     ██║   \n"
+           "██║     ██║██╔══██╗██╔══╝     ██║   \n"
+           "███████╗██║██████╔╝██║        ██║   \n"
+           "╚══════╝╚═╝╚═════╝ ╚═╝        ╚═╝   \n"
+           "                                    \n"
+           "\033[0m" // Reset color
+    );
 
-   test_ft_memmove();
+    test_ft_memmove();
     test_ft_atoi();
     test_ft_isalnum();
     test_ft_isalpha();
@@ -1293,31 +1298,26 @@ int main(void)
     test_ft_strrchr();
     test_ft_tolower();
     test_ft_toupper();
-    
-printf("\033[1;32m"  
-"\n\n"
-"██████╗  ██████╗ ███╗   ██╗███████╗\n"
-"██╔══██╗██╔═══██╗████╗  ██║██╔════╝\n"
-"██║  ██║██║   ██║██╔██╗ ██║█████╗  \n"
-"██║  ██║██║   ██║██║╚██╗██║██╔══╝  \n"
-"██████╔╝╚██████╔╝██║ ╚████║███████╗\n"
-"╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚══════╝\n"
-"                                   \n"
-"\033[1;33m"  // Bold Cyan for extra style
-"✅ ALL TESTS PASSED SUCCESSFULLY! ✅\n"
-"\033[1;33m"  // Bold Yellow for encouragement
-"               1337 KH\n\n"
-"\033[0;36m"  // Bold Cyan for additional info
-"           by: @jel-yous       \n"
-"    GitHub: https://github.com/jawadelyousfi17/libft\n"
-"          If you encounter any issues or bugs,\n"
-"          please report them on the GitHub page.\n"
-"\033[0m"  // Reset color
-);
 
-
-
-
-
-     return 0;
+    printf("\033[1;32m"
+           "\n\n"
+           "██████╗  ██████╗ ███╗   ██╗███████╗\n"
+           "██╔══██╗██╔═══██╗████╗  ██║██╔════╝\n"
+           "██║  ██║██║   ██║██╔██╗ ██║█████╗  \n"
+           "██║  ██║██║   ██║██║╚██╗██║██╔══╝  \n"
+           "██████╔╝╚██████╔╝██║ ╚████║███████╗\n"
+           "╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚══════╝\n"
+           "                                   \n"
+           "\033[1;33m" // Bold Cyan for extra style
+           "✅ ALL TESTS PASSED SUCCESSFULLY! ✅\n"
+           "\033[1;33m" // Bold Yellow for encouragement
+           "               1337 KH\n\n"
+           "\033[0;36m" // Bold Cyan for additional info
+           "   by: @jel-yous       \n"
+           "   GitHub: https://github.com/jawadelyousfi17/libft\n"
+           "   If you encounter any issues or bugs,\n"
+           "   please report them on the GitHub page.\n"
+           "\033[0m" // Reset color
+    );
+    return 0;
 }
