@@ -850,20 +850,319 @@ void c_assert_equal(int a, int b, int line, int test_number, int *accepted)
 //            "\033[0m\n");
 // }
 
+// void test_ft_memcpy()
+// {
+//     printf("\033[0;36m"
+//            "Test : "
+//            "\033[1;37m"
+//            "int ft_memcmp(const void *s1, const void *s2, size_t n)"
+//            "\033[0m\n"); // Cyan
+//     printf("\033[0;36m"
+//            "where 0 <= n "
+//            "\033[0m\n"); // Cyan
+
+//     // init
+//     void *s1, *s2;
+
+//     char src1[] = "hello";
+//     char dest1[20];
+//     char dest2[20];
+//     memcpy(dest1, src1, 5);
+//     ft_memcpy(dest2, src1, 5);
+//     assert(memcmp(dest1, dest2, 5) == 0);
+
+//     // 1. Test copying an empty string
+//     char src2[] = "";
+//     memcpy(dest1, src2, 1);
+//     ft_memcpy(dest2, src2, 1);
+//     assert(memcmp(dest1, dest2, 1) == 0);
+
+//     // 2. Test copying a string with length 0
+//     memcpy(dest1, src1, 0);
+//     ft_memcpy(dest2, src1, 0);
+//     assert(memcmp(dest1, dest2, 0) == 0);
+
+//     // 3. Test copying a string with null character in the middle
+//     char src3[] = "test\0ing";
+//     memcpy(dest1, src3, 8);
+//     ft_memcpy(dest2, src3, 8);
+//     assert(memcmp(dest1, dest2, 8) == 0);
+
+//     // 4. Test copying a string to the start of another
+//     char src4[] = "1234567890";
+//     memcpy(dest1, src4, 10);
+//     ft_memcpy(dest2, src4, 10);
+//     assert(memcmp(dest1, dest2, 10) == 0);
+
+//     // 5. Test copying overlapping memory regions (src before dest)
+//     memcpy(dest1, dest1 + 2, 5);
+//     ft_memcpy(dest2, dest2 + 2, 5);
+//     assert(memcmp(dest1, dest2, 5) == 0);
+
+//     // 6. Test copying overlapping memory regions (src after dest)
+//     // memcpy(dest1 + 2, dest1, 5);
+//     // ft_memcpy(dest2 + 2, dest2, 5);
+//     // assert(memcmp(dest1, dest2, 7) == 0);
+
+//     // 7. Test copying a large buffer
+//     char src5[1000], dest3[1000], dest4[1000];
+//     memset(src5, 'A', 1000);
+//     memcpy(dest3, src5, 1000);
+//     ft_memcpy(dest4, src5, 1000);
+//     assert(memcmp(dest3, dest4, 1000) == 0);
+
+//     // 8. Test copying with different characters
+//     char src6[] = "abcdABCD1234!@#$";
+//     memcpy(dest1, src6, 16);
+//     ft_memcpy(dest2, src6, 16);
+//     assert(memcmp(dest1, dest2, 16) == 0);
+
+//     // 9. Test copying with spaces
+//     char src7[] = "   spaces   ";
+//     memcpy(dest1, src7, 12);
+//     ft_memcpy(dest2, src7, 12);
+//     assert(memcmp(dest1, dest2, 12) == 0);
+
+//     // 10. Test copying non-printable characters
+//     char src8[] = "\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0A";
+//     memcpy(dest1, src8, 10);
+//     ft_memcpy(dest2, src8, 10);
+//     assert(memcmp(dest1, dest2, 10) == 0);
+
+//     // 11. Test copying from an uninitialized source
+//     char src9[20];
+//     memcpy(dest1, src9, 20);
+//     ft_memcpy(dest2, src9, 20);
+//     assert(memcmp(dest1, dest2, 20) == 0);
+
+//     // 12. Test copying to an uninitialized destination
+//     char dest5[20], dest6[20];
+//     memcpy(dest5, src1, 5);
+//     ft_memcpy(dest6, src1, 5);
+//     assert(memcmp(dest5, dest6, 5) == 0);
+
+//     // 13. Test copying a large number of zeros
+//     char src10[100] = {0};
+//     memcpy(dest1, src10, 100);
+//     ft_memcpy(dest2, src10, 100);
+//     assert(memcmp(dest1, dest2, 100) == 0);
+
+//     // 14. Test copying to a smaller buffer than the source
+//     char src11[] = "This is a test for buffer overflow";
+//     char dest7[10];
+//     char dest8[10];
+//     memcpy(dest7, src11, 10);
+//     ft_memcpy(dest8, src11, 10);
+//     assert(memcmp(dest7, dest8, 10) == 0);
+
+//     // 15. Test copying a single character
+//     char src12[] = "a";
+//     memcpy(dest1, src12, 1);
+//     ft_memcpy(dest2, src12, 1);
+//     assert(memcmp(dest1, dest2, 1) == 0);
+
+//     // 16. Test copying from the middle of a buffer
+//     char src13[] = "Copy from middle";
+//     memcpy(dest1, src13 + 5, 10);
+//     ft_memcpy(dest2, src13 + 5, 10);
+//     assert(memcmp(dest1, dest2, 10) == 0);
+
+//     // 17. Test copying with different lengths
+//     memcpy(dest1, src1, 3);
+//     ft_memcpy(dest2, src1, 3);
+//     assert(memcmp(dest1, dest2, 3) == 0);
+
+//     // 18. Test copying characters including special symbols
+//     char src14[] = "~`!@#$%^&*()_+";
+//     memcpy(dest1, src14, 14);
+//     ft_memcpy(dest2, src14, 14);
+//     assert(memcmp(dest1, dest2, 14) == 0);
+
+//     // 19. Test copying where the source and destination are the same
+//     char src15[50] = "Self copy test";
+//     memcpy(src15, src15, 50);
+//     ft_memcpy(src15, src15, 50);
+//     assert(memcmp(src15, src15, 50) == 0);
+
+//     // 20. Test copying the last character in a string
+//     char src16[] = "end";
+//     memcpy(dest1, src16 + 2, 1);
+//     ft_memcpy(dest2, src16 + 2, 1);
+//     assert(memcmp(dest1, dest2, 1) == 0);
+//     printf("\033[1;32m"
+//            "All tests passed!\n"
+//            "\033[0m\n");
+// }
+
+
+// void test_ft_memmove()
+// {
+//     printf("\033[0;36m"
+//            "Test : "
+//            "\033[1;37m"
+//            "void *ft_memmove(void *dest, const void *src, size_t n)"
+//            "\033[0m\n"); // Cyan
+//     printf("\033[0;36m"
+//            "where 0 <= n "
+//            "\033[0m\n"); // Cyan
+
+//     // init
+//      // 1. Basic non-overlapping copy
+//     char dest1[20] = "hello";
+//     char dest2[20] = "hello";
+//     char src1[] = "World";
+//     memmove(dest2, src1, 5);
+//     ft_memmove(dest1, src1, 5);
+//     assert(memcmp(dest1, dest2, 5) == 0);
+
+//     // 2. Copying with overlap where src is before dest
+//     char overlap1[] = "Overlap test";
+//     char overlap2[] = "Overlap test";
+//     memmove(overlap2 + 3, overlap2, 5);
+//     ft_memmove(overlap1 + 3, overlap1, 5);
+//     assert(memcmp(overlap1, overlap2, 12) == 0);
+
+//     // 3. Copying with overlap where dest is before src
+//     char overlap3[] = "Overlap test";
+//     char overlap4[] = "Overlap test";
+//     memmove(overlap4, overlap4 + 3, 5);
+//     ft_memmove(overlap3, overlap3 + 3, 5);
+//     assert(memcmp(overlap3, overlap4, 12) == 0);
+
+//     // 4. Copying a large buffer
+//     char largeSrc[1000], largeDest1[1000], largeDest2[1000];
+//     memset(largeSrc, 'A', 1000);
+//     memmove(largeDest1, largeSrc, 1000);
+//     ft_memmove(largeDest2, largeSrc, 1000);
+//     assert(memcmp(largeDest1, largeDest2, 1000) == 0);
+
+//     // 5. Copying a buffer of zeros
+//     char zeroSrc[50] = {0};
+//     char zeroDest1[50], zeroDest2[50];
+//     memmove(zeroDest1, zeroSrc, 50);
+//     ft_memmove(zeroDest2, zeroSrc, 50);
+//     assert(memcmp(zeroDest1, zeroDest2, 50) == 0);
+
+//     // 6. Copying a single character
+//     char singleCharSrc[] = "A";
+//     char singleCharDest1[2], singleCharDest2[2];
+//     memmove(singleCharDest1, singleCharSrc, 1);
+//     ft_memmove(singleCharDest2, singleCharSrc, 1);
+//     assert(memcmp(singleCharDest1, singleCharDest2, 1) == 0);
+
+//     // 7. Copying with length 0
+//     char emptySrc[] = "Empty";
+//     char emptyDest1[10] = "Dest";
+//     char emptyDest2[10] = "Dest";
+//     memmove(emptyDest1, emptySrc, 0);
+//     ft_memmove(emptyDest2, emptySrc, 0);
+//     assert(memcmp(emptyDest1, emptyDest2, 10) == 0);
+
+//     // 8. Copying with overlapping memory (src in the middle of dest)
+//     char middleOverlap1[] = "Hello, World!";
+//     char middleOverlap2[] = "Hello, World!";
+//     memmove(middleOverlap1 + 7, middleOverlap1 + 6, 6);
+//     ft_memmove(middleOverlap2 + 7, middleOverlap2 + 6, 6);
+//     assert(memcmp(middleOverlap1, middleOverlap2, 13) == 0);
+
+//     // 9. Copying different characters
+//     char diffSrc[] = "123456789";
+//     char diffDest1[10], diffDest2[10];
+//     memmove(diffDest1, diffSrc, 9);
+//     ft_memmove(diffDest2, diffSrc, 9);
+//     assert(memcmp(diffDest1, diffDest2, 9) == 0);
+
+//     // 10. Copying non-printable characters
+//     char nonPrintSrc[] = "\x01\x02\x03\x04\x05\x06";
+//     char nonPrintDest1[6], nonPrintDest2[6];
+//     memmove(nonPrintDest1, nonPrintSrc, 6);
+//     ft_memmove(nonPrintDest2, nonPrintSrc, 6);
+//     assert(memcmp(nonPrintDest1, nonPrintDest2, 6) == 0);
+
+//     // 11. Copying into the same buffer
+//     char sameBuffer1[] = "abcdef";
+//     char sameBuffer2[] = "abcdef";
+//     memmove(sameBuffer1, sameBuffer1, 6);
+//     ft_memmove(sameBuffer2, sameBuffer2, 6);
+//     assert(memcmp(sameBuffer1, sameBuffer2, 6) == 0);
+
+//     // 12. Copying a part of the same buffer with a different size
+//     char partialBuffer1[] = "Buffer testing";
+//     char partialBuffer2[] = "Buffer testing";
+//     memmove(partialBuffer1 + 4, partialBuffer1 + 2, 8);
+//     ft_memmove(partialBuffer2 + 4, partialBuffer2 + 2, 8);
+//     assert(memcmp(partialBuffer1, partialBuffer2, 15) == 0);
+
+//     // 13. Copying overlapping data with larger buffer
+//     char largerOverlap1[100] = "Overlap check with large buffer";
+//     char largerOverlap2[100] = "Overlap check with large buffer";
+//     memmove(largerOverlap1 + 10, largerOverlap1, 25);
+//     ft_memmove(largerOverlap2 + 10, largerOverlap2, 25);
+//     assert(memcmp(largerOverlap1, largerOverlap2, 35) == 0);
+
+//     // 14. Copying from a null buffer
+//     char nullSrc[] = "";
+//     char nullDest1[1], nullDest2[1];
+//     memmove(nullDest1, nullSrc, 1);
+//     ft_memmove(nullDest2, nullSrc, 1);
+//     assert(memcmp(nullDest1, nullDest2, 1) == 0);
+
+//     // 15. Copying using all spaces
+//     char spaceSrc[] = "          ";
+//     char spaceDest1[11], spaceDest2[11];
+//     memmove(spaceDest1, spaceSrc, 10);
+//     ft_memmove(spaceDest2, spaceSrc, 10);
+//     assert(memcmp(spaceDest1, spaceDest2, 10) == 0);
+
+//     // 16. Copying special characters
+//     char specialSrc[] = "~!@#$%^&*()";
+//     char specialDest1[11], specialDest2[11];
+//     memmove(specialDest1, specialSrc, 10);
+//     ft_memmove(specialDest2, specialSrc, 10);
+//     assert(memcmp(specialDest1, specialDest2, 10) == 0);
+
+//     // 17. Copying overlapping regions (end to start)
+//     char overlapEnd1[] = "abcdefghijk";
+//     char overlapEnd2[] = "abcdefghijk";
+//     memmove(overlapEnd1, overlapEnd1 + 4, 5);
+//     ft_memmove(overlapEnd2, overlapEnd2 + 4, 5);
+//     assert(memcmp(overlapEnd1, overlapEnd2, 11) == 0);
+
+//     // 18. Copying overlapping regions (start to end)
+//     char overlapStart1[] = "abcdefghijk";
+//     char overlapStart2[] = "abcdefghijk";
+//     memmove(overlapStart1 + 4, overlapStart1, 5);
+//     ft_memmove(overlapStart2 + 4, overlapStart2, 5);
+//     assert(memcmp(overlapStart1, overlapStart2, 11) == 0);
+
+//     // 19. Copying a buffer of random data
+//     char randSrc[50];
+//     char randDest1[50], randDest2[50];
+//     for (int i = 0; i < 50; i++) randSrc[i] = rand() % 256;
+//     memmove(randDest1, randSrc, 50);
+//     ft_memmove(randDest2, randSrc, 50);
+//     assert(memcmp(randDest1, randDest2, 50) == 0);
+
+//     // 20. Copying overlapping regions with a partial overlap
+//     char partialOverlap1[] = "Partial overlap example";
+//     char partialOverlap2[] = "Partial overlap example";
+//     memmove(partialOverlap1 + 8, partialOverlap1, 10);
+//     ft_memmove(partialOverlap2 + 8, partialOverlap2, 10);
+//     assert(memcmp(partialOverlap1, partialOverlap2, 20) == 0);
+//     printf("\033[1;32m"
+//            "All tests passed!\n"
+//            "\033[0m\n");
+// }
+
+
 int main(void)
 {
-    // void *s = (char *)"1337";
-    // void *s1 = (char *)"1338";
-    test_ft_memcmp();
-    // s = (char *)memset(s, 65, 6 * sizeof(char));
-    // s1 = (char *)memset(s1, 10, 6 * sizeof(char));
+   test_ft_memmove();
+     char partialOverlap1[] = "Partial overlap example";
+    char partialOverlap2[] = "Partial overlap example";
+    memmove(partialOverlap1 + 8, partialOverlap1, 10);
+    ft_memmove(partialOverlap2 + 8, partialOverlap2, 10);
+    printf("%d\n",memcmp(partialOverlap1,partialOverlap2,24));
 
-    // ((char*)s)[2] = '\0';
-    // ((char*)s1)[2] = '\0';
-    void *s1 = (char *)"abrd";
-    void *s2 = (char *)"bbre";
-    // assert(memcmp(s1, s2, 4) == ft_memcmp(s1, s2, 4));
-    // printf("\rAfter memset():  %d  %d\n", ft_memcmp(s1, s2, 0), memcmp(s1, s2, 0));
-    //  printf("After memset():  %d  %d\n", ft_memcmp(s1,s,5), memcmp(s1,s,5));
     return 0;
 }
