@@ -19,3 +19,7 @@ void test_ft_memset();
 void test_ft_memcmp();
 void test_ft_memcpy();
 void test_ft_memmove();
+void test_ft_memchr();
+void test_ft_bzero();
+void test_ft_strdup();
+void test_ft_calloc();

@@ -63,7 +63,8 @@
     "libft.h": "c",
     "ctype.h": "c",
     "string.h": "c",
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "stdlib.h": "c"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }
