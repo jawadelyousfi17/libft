@@ -135,7 +135,7 @@ void test_ft_isprint()
     }
     printf("\033[1;32m"
            "OK!"
-           "\033[0m\n");
+           "\033[0m");
     ;
 }
 
@@ -163,7 +163,7 @@ void test_ft_strlen()
     assert(strlen("\n\n\n\n\\\0\n\t\r\t") == ft_strlen("\n\n\n\n\\\0\n\t\r\t"));
 
     printf("\033[1;32m"
-           "OK!"
+           "OK!\n"
            "\033[0m");
     ;
 }
@@ -173,7 +173,7 @@ void test_ft_toupper()
     printf("\033[0;36m"
            "Test : "
            "\033[1;37m"
-           "size_t ft_strlen(const char *s)"
+           "int ft_toupper(int c)"
            "\033[0m\n"); // Cyan
     // printf("\033[0;36m"
     //        "where -1 <= c <= 255 "
@@ -186,7 +186,7 @@ void test_ft_toupper()
         c++;
     }
     printf("\033[1;32m"
-           "OK!"
+           "OK!\n"
            "\033[0m");
     ;
 }
@@ -720,7 +720,7 @@ void test_ft_atoi()
     printf("\033[0;36m"
            "Test : "
            "\033[1;37m"
-           " int ft_atoi(const char *nptr)"
+           "int ft_atoi(const char *nptr)"
            "\033[0m\n"); // Cyan
     // printf("\033[0;36m"
     //        "where 0 <= strlen(nptr) <= 1000 "
@@ -773,102 +773,116 @@ void test_ft_memset()
     void *s1, *s2;
 
     // Test Case 1: Set all bytes to 'A' in a buffer of size 10
-    s1 = malloc(10);
-    s2 = malloc(10);
-    assert(strcmp((char *)ft_memset(s1, 65, 9), (char *)memset(s2, 65, 9)) == 0);
 
     // Test Case 2: Set all bytes to zero in a buffer of size 10
     s1 = malloc(10);
     s2 = malloc(10);
     assert(memcmp(ft_memset(s1, 0, 10), memset(s2, 0, 10), 10) == 0);
-
+    free(s1);
+    free(s2);
     // Test Case 3: Fill buffer of size 1 with 'X'
     s1 = malloc(1);
     s2 = malloc(1);
     assert(memcmp(ft_memset(s1, 'X', 1), memset(s2, 'X', 1), 1) == 0);
-
+    free(s1);
+    free(s2);
     // Test Case 4: Fill buffer of size 0 (no change)
-//     s1 = malloc(1);
-//     s2 = malloc(1);
-//     assert(memcmp(ft_memset(s1, 255, 0), memset(s2, 255, 0), 1) == 0);
+    //     s1 = malloc(1);
+    //     s2 = malloc(1);
+    //     assert(memcmp(ft_memset(s1, 255, 0), memset(s2, 255, 0), 1) == 0);
 
     // Test Case 5: Fill with different values (all 255)
     s1 = malloc(5);
     s2 = malloc(5);
     assert(memcmp(ft_memset(s1, 255, 5), memset(s2, 255, 5), 5) == 0);
-
+    free(s1);
+    free(s2);
     // Test Case 6: Fill only the first half of the buffer
     s1 = malloc(10);
     s2 = malloc(10);
     assert(memcmp(ft_memset(s1, 'B', 5), memset(s2, 'B', 5), 10) == 0);
-
+    free(s1);
+    free(s2);
     // Test Case 7: Fill with non-ASCII value (128)
     s1 = malloc(10);
     s2 = malloc(10);
     assert(memcmp(ft_memset(s1, 128, 10), memset(s2, 128, 10), 10) == 0);
-
+    free(s1);
+    free(s2);
     // Test Case 8: Fill large buffer with zero
     s1 = malloc(1000);
     s2 = malloc(1000);
     assert(memcmp(ft_memset(s1, 0, 1000), memset(s2, 0, 1000), 1000) == 0);
-
+    free(s1);
+    free(s2);
     // Test Case 9: Fill with spaces (' ')
     s1 = malloc(20);
     s2 = malloc(20);
     assert(memcmp(ft_memset(s1, ' ', 20), memset(s2, ' ', 20), 20) == 0);
-
+    free(s1);
+    free(s2);
     // Test Case 10: Fill with negative value (-1)
     s1 = malloc(15);
     s2 = malloc(15);
     assert(memcmp(ft_memset(s1, -1, 15), memset(s2, -1, 15), 15) == 0);
-
+    free(s1);
+    free(s2);
     // Test Case 11: Fill with 0x7F (127, max ASCII value)
     s1 = malloc(50);
     s2 = malloc(50);
     assert(memcmp(ft_memset(s1, 0x7F, 50), memset(s2, 0x7F, 50), 50) == 0);
-
+    free(s1);
+    free(s2);
     // Test Case 12: Fill entire buffer with a value, part of which was already set
     s1 = malloc(10);
     s2 = malloc(10);
     memset(s1, 'A', 5);
     memset(s2, 'A', 5);
     assert(memcmp(ft_memset(s1, 'B', 10), memset(s2, 'B', 10), 10) == 0);
-
+    free(s1);
+    free(s2);
     // Test Case 13: Fill buffer of a single element with zero
     s1 = malloc(1);
     s2 = malloc(1);
     assert(memcmp(ft_memset(s1, 0, 1), memset(s2, 0, 1), 1) == 0);
-
+    free(s1);
+    free(s2);
     // Test Case 14: Fill with boundary value (0xFF)
     s1 = malloc(64);
     s2 = malloc(64);
     assert(memcmp(ft_memset(s1, 0xFF, 64), memset(s2, 0xFF, 64), 64) == 0);
-
+    free(s1);
+    free(s2);
     // Test Case 15: Fill buffer with alternate value (0xAA)
     s1 = malloc(256);
     s2 = malloc(256);
     assert(memcmp(ft_memset(s1, 0xAA, 256), memset(s2, 0xAA, 256), 256) == 0);
-
+    free(s1);
+    free(s2);
     // Test Case 16: Fill large buffer with max unsigned value (255)
     s1 = malloc(2048);
     s2 = malloc(2048);
     assert(memcmp(ft_memset(s1, 255, 2048), memset(s2, 255, 2048), 2048) == 0);
-
+    free(s1);
+    free(s2);
     // Test Case 17: Fill buffer of uneven size with zero
     s1 = malloc(17);
     s2 = malloc(17);
     assert(memcmp(ft_memset(s1, 0, 17), memset(s2, 0, 17), 17) == 0);
-
+    free(s1);
+    free(s2);
     // Test Case 18: Fill very small buffer (1 byte)
     s1 = malloc(1);
     s2 = malloc(1);
     assert(memcmp(ft_memset(s1, '!', 1), memset(s2, '!', 1), 1) == 0);
-
+    free(s1);
+    free(s2);
     // Test Case 19: Fill with alternating bits (0x55)
     s1 = malloc(100);
     s2 = malloc(100);
     assert(memcmp(ft_memset(s1, 0x55, 100), memset(s2, 0x55, 100), 100) == 0);
-
+    free(s1);
+    free(s2);
     // Test Case 20: Check if `memset` affects beyond allocated memory
     s1 = malloc(10);
     s2 = malloc(10);
@@ -920,9 +934,9 @@ void test_ft_memcmp()
     assert(memcmp(s1, s2, 2) == ft_memcmp(s1, s2, 2));
     assert(memcmp(s1, s2, 1) == ft_memcmp(s1, s2, 1));
     assert(memcmp(s1, s2, 0) == ft_memcmp(s1, s2, 0));
-    s1 = (char *)"";
-    s2 = (char *)"";
-    assert(memcmp(s1, s2, 4) == ft_memcmp(s1, s2, 4));
+    s1 = (char *)"misimiss";
+    s2 = (char *)"mismsims";
+    assert(memcmp(s1, s2, 4) == ft_memcmp(s1, s2, 6));
     assert(memcmp(s1, s2, 3) == ft_memcmp(s1, s2, 3));
     assert(memcmp(s1, s2, 2) == ft_memcmp(s1, s2, 2));
     assert(memcmp(s1, s2, 1) == ft_memcmp(s1, s2, 1));
@@ -955,6 +969,8 @@ void test_ft_memcmp()
     assert(memcmp(s3, s4, 2) == ft_memcmp(s3, s4, 2));
     assert(memcmp(s3, s4, 1) == ft_memcmp(s3, s4, 1));
     assert(memcmp(s3, s4, 0) == ft_memcmp(s3, s4, 0));
+    free(s3);
+    free(s4);
     printf("\033[1;32m"
            "OK!"
            "\033[0m\n");
@@ -965,14 +981,14 @@ void test_ft_memcpy()
     printf("\033[0;36m"
            "Test : "
            "\033[1;37m"
-           "int ft_memcmp(const void *s1, const void *s2, size_t n)"
+           "void *ft_memcpy(void *dest, const void *src, size_t n);"
            "\033[0m\n"); // Cyan
     // printf("\033[0;36m"
     //        "where 0 <= n "
     //        "\033[0m\n"); // Cyan
 
     // init
-//     void *s1, *s2;
+    //     void *s1, *s2;
 
     char src1[] = "hello";
     char dest1[20];
@@ -980,13 +996,11 @@ void test_ft_memcpy()
     memcpy(dest1, src1, 5);
     ft_memcpy(dest2, src1, 5);
     assert(memcmp(dest1, dest2, 5) == 0);
-
     // 1. Test copying an empty string
     char src2[] = "";
     memcpy(dest1, src2, 1);
     ft_memcpy(dest2, src2, 1);
     assert(memcmp(dest1, dest2, 1) == 0);
-
     // 2. Test copying a string with length 0
     memcpy(dest1, src1, 0);
     ft_memcpy(dest2, src1, 0);
@@ -1005,9 +1019,9 @@ void test_ft_memcpy()
     assert(memcmp(dest1, dest2, 10) == 0);
 
     // 5. Test copying overlapping memory regions (src before dest)
-    memcpy(dest1, dest1 + 2, 5);
-    ft_memcpy(dest2, dest2 + 2, 5);
-    assert(memcmp(dest1, dest2, 5) == 0);
+    // memcpy(dest1, dest1 + 2, 5);
+    // ft_memcpy(dest2, dest2 + 2, 5);
+    // assert(memcmp(dest1, dest2, 5) == 0);
 
     // 6. Test copying overlapping memory regions (src after dest)
     // memcpy(dest1 + 2, dest1, 5);
@@ -1053,9 +1067,9 @@ void test_ft_memcpy()
 
     // 13. Test copying a large number of zeros
     char src10[100] = {0};
-    memcpy(dest1, src10, 100);
-    ft_memcpy(dest2, src10, 100);
-    assert(memcmp(dest1, dest2, 100) == 0);
+    memcpy(dest1, src10, 20);
+    ft_memcpy(dest2, src10, 20);
+    assert(memcmp(dest1, dest2, 20) == 0);
 
     // 14. Test copying to a smaller buffer than the source
     char src11[] = "This is a test for buffer overflow";
@@ -1089,10 +1103,10 @@ void test_ft_memcpy()
     assert(memcmp(dest1, dest2, 14) == 0);
 
     // 19. Test copying where the source and destination are the same
-//     char src15[50] = "Self copy test";
-//     memcpy(src15, src15, 50);
-//     ft_memcpy(src15, src15, 50);
-//     assert(memcmp(src15, src15, 50) == 0);
+    char src15[50] = "Self copy test";
+    memcpy(src15, src15, 50);
+    ft_memcpy(src15, src15, 50);
+    assert(memcmp(src15, src15, 50) == 0);
 
     // 20. Test copying the last character in a string
     char src16[] = "end";
@@ -1277,28 +1291,25 @@ int main(void)
            "                                    \n"
            "\033[0m" // Reset color
     );
-
-    test_ft_memmove();
-    test_ft_atoi();
+    test_ft_strlen();
     test_ft_isalnum();
     test_ft_isalpha();
     test_ft_isascii();
     test_ft_isdigit();
     test_ft_isprint();
-    test_ft_memcmp();
-    test_ft_memcpy();
-    test_ft_memmove();
-    test_ft_memset();
-    test_ft_strchr();
-    test_ft_strlcat();
-    test_ft_strlcpy();
-    test_ft_strlen();
     test_ft_strncmp();
     test_ft_strnstr();
     test_ft_strrchr();
     test_ft_tolower();
     test_ft_toupper();
-
+    test_ft_strchr();
+    test_ft_strlcat();
+    test_ft_strlcpy();
+    test_ft_atoi();
+    test_ft_memcmp();
+    test_ft_memcpy();
+    test_ft_memset();
+    test_ft_memmove();
     printf("\033[1;32m"
            "\n\n"
            "██████╗  ██████╗ ███╗   ██╗███████╗\n"
