@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "chalk": "^5.3.0"
+  },
+    "scripts": {
+      "check": "node check.js",
+      "start": "node run.js"
+
+    }
+}

@@ -1277,9 +1277,35 @@ void test_ft_memmove()
            "OK!"
            "\033[0m\n");
 }
-
-int main(void)
+void spinner(int duration_ms)
 {
+    const char spinner[] = "|/-\\";
+    int i;
+    int duration_us = duration_ms * 1000; // Convert milliseconds to microseconds
+    int delay = 100000;                   // Delay between frames in microseconds
+
+    for (i = 0; i < duration_us / delay; ++i)
+    {
+        printf("\r%c", spinner[i % 4]);
+        fflush(stdout); // Make sure the character is printed immediately
+        usleep(delay);  // Sleep for the specified delay
+    }
+
+    // Clear the spinner character
+    printf("\rDone!        \n");
+}
+#define DURATION 500
+#define WAIT(x) spinner(x)
+
+int main(int ac, char *av[])
+{
+    int duration = 180;
+    if (ac == 2)
+    {
+        if (strcmp(av[1], "-fast") == 0 || strcmp(av[1], "-f") == 0)
+            duration = 0;
+    }
+
     printf("\033[1;32m"
            "\n\n"
            "██╗     ██╗██████╗ ███████╗████████╗\n"
@@ -1289,27 +1315,52 @@ int main(void)
            "███████╗██║██████╔╝██║        ██║   \n"
            "╚══════╝╚═╝╚═════╝ ╚═╝        ╚═╝   \n"
            "                                    \n"
+           "\033[0m"    // Reset color
+           "\033[0;36m" // Bold Cyan for additional info
+           "   by: @jel-yous       \n"
+           "   GitHub: https://github.com/jawadelyousfi17/libft\n"
+           "   If you encounter any issues or bugs,\n"
+           "   please report them on the GitHub page.\n\n\n"
            "\033[0m" // Reset color
     );
+    WAIT(duration);
     test_ft_strlen();
+    WAIT(duration);
     test_ft_isalnum();
+    WAIT(duration);
     test_ft_isalpha();
+    WAIT(duration);
     test_ft_isascii();
+    WAIT(duration);
     test_ft_isdigit();
     test_ft_isprint();
+    WAIT(duration);
     test_ft_strncmp();
+    WAIT(duration);
     test_ft_strnstr();
+    WAIT(duration);
     test_ft_strrchr();
+    WAIT(duration);
     test_ft_tolower();
+    WAIT(duration);
     test_ft_toupper();
+    WAIT(duration);
     test_ft_strchr();
+    WAIT(duration);
     test_ft_strlcat();
+    WAIT(duration);
     test_ft_strlcpy();
+    WAIT(duration);
     test_ft_atoi();
+    WAIT(duration);
     test_ft_memcmp();
+    WAIT(duration);
     test_ft_memcpy();
+    WAIT(duration);
     test_ft_memset();
+    WAIT(duration);
     test_ft_memmove();
+    WAIT(duration);
     printf("\033[1;32m"
            "\n\n"
            "██████╗  ██████╗ ███╗   ██╗███████╗\n"
