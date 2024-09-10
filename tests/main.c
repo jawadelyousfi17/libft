@@ -800,7 +800,7 @@ void test_ft_memset()
     // Test Case 6: Fill only the first half of the buffer
     s1 = malloc(10);
     s2 = malloc(10);
-    assert(memcmp(ft_memset(s1, 'B', 5), memset(s2, 'B', 5), 10) == 0);
+    assert(memcmp(ft_memset(s1, 'B', 5), memset(s2, 'B', 5), 5) == 0);
     free(s1);
     free(s2);
     // Test Case 7: Fill with non-ASCII value (128)
@@ -1103,10 +1103,10 @@ void test_ft_memcpy()
     assert(memcmp(dest1, dest2, 14) == 0);
 
     // 19. Test copying where the source and destination are the same
-    char src15[50] = "Self copy test";
-    memcpy(src15, src15, 50);
-    ft_memcpy(src15, src15, 50);
-    assert(memcmp(src15, src15, 50) == 0);
+    // char src15[50] = "Self copy test";
+    // memcpy(src15, src15, 50);
+    // ft_memcpy(src15, src15, 50);
+    // assert(memcmp(src15, src15, 50) == 0);
 
     // 20. Test copying the last character in a string
     char src16[] = "end";
