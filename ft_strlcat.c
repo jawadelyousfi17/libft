@@ -2,29 +2,20 @@
 
 size_t ft_strlen(const char *s);
 
-size_t ft_strlcat(char *dst, const char *src, size_t size)
-{
-    size_t index;
-    size_t dst_size;
-    int j_index;
+size_t ft_strlcat(char *dst, const char *src, size_t dstsize) {
+    size_t dst_len = strlen(dst);
+    size_t src_len = strlen(src);
+    size_t i;
 
-    dst_size = ft_strlen(dst);
-    index = 0;
-    j_index = 0;
-    if (size < dst_size)
-    {
-        return (size + ft_strlen(src));
+    if (dstsize <= dst_len) {
+        return (dstsize + src_len);  // Not enough space in dst
     }
-    while (dst[index])
-    {
-        index++;
+    i = 0;
+    while (i < (dstsize - dst_len - 1) && src[i] != '\0') {
+        dst[dst_len + i] = src[i];
+        i++;
     }
-    while (src[j_index] && j_index < (int)(size - dst_size - 1))
-    {
-        dst[index] = src[j_index];
-        index++;
-        j_index++;
-    }
-    dst[index] = '\0';
-    return (dst_size + ft_strlen(src));
+    dst[dst_len + i] = '\0';  // Null-terminate the result
+
+    return (dst_len + src_len);
 }

@@ -58,7 +58,12 @@
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
     "unistd.h": "c",
-    "cstdlib": "c"
+    "cstdlib": "c",
+    "assert.h": "c",
+    "libft.h": "c",
+    "ctype.h": "c",
+    "string.h": "c",
+    "stdio.h": "c"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }

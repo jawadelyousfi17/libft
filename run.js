@@ -1,6 +1,7 @@
 const { exec } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const { exit } = require('process');
 
 // Array of file paths to check
 const filesToCheck = [
@@ -26,6 +27,33 @@ const filesToCheck = [
     'Makefile',
 ];
 
+// All tests Functions
+const testFunctionsFiles = [
+    'test_ft_isalpha.c',
+    'test_ft_isdigit.c',
+    'test_ft_isalnum.c',
+    'test_ft_isascii.c',
+    'test_ft_isprint.c',
+    'test_ft_strlen.c',
+    'test_ft_toupper.c',
+    'test_ft_tolower.c',
+    'test_ft_strchr.c',
+    'test_ft_strrchr.c',
+    'test_ft_strncmp.c',
+    'test_ft_strlcpy.c',
+    'test_ft_strlcat.c',
+    'test_ft_strnstr.c',
+    'test_ft_atoi.c',
+    'test_ft_memset.c',
+    'test_ft_memcmp.c',
+    'test_ft_memcpy.c',
+    'test_ft_memmove.c'
+]
+const pathToTestsFunction = 'tests/test_functions/'
+let allTestsFunctionsCommand = '';
+testFunctionsFiles.forEach(testFunction => {
+    allTestsFunctionsCommand += `${pathToTestsFunction}${testFunction} `
+})
 
 const reset = '\x1b[0m';
 const bold = '\x1b[1m';
@@ -38,7 +66,8 @@ const status = [
     { text: '🔍 Checking files...', color: blue },
     { text: '⚙️ Processing...', color: green },
     { text: '✅ Complete!', color: green },
-    { text: 'ERROR! some files are missing', color: red }
+    { text: 'ERROR! some files are missing', color: red },
+    { text: '✅ All files found', color: green },
 
 ];
 
@@ -63,23 +92,27 @@ async function checkFilesExist(files) {
         const absolutePath = path.resolve(file); // Resolve absolute path
         const exists = await checkFileExists(absolutePath);
         if (!exists) {
-            console.log(`${reset}${bold}`, `File ${file} ${exists ? 'exists' : 'is MISSING'}\n`);
+            console.error(`${file} ${exists ? 'exists' : 'is MISSING'}`);
             err = true;
         }
     }
     return err;
 }
 
-printStatus(1);
+console.log(blue, bold,"\r🔍  Checking files ...")
+
 checkFilesExist(filesToCheck).then((err) => {
     if (err) {
-        printStatus(3)
-    console.log(red,bold,'Stopping the application...\n');
-    process.exit(0); // 0 indicates success
+        console.log(red, bold, '\rERROR! some files are missing');
+        console.log(red, bold, '\rStopping the application...\n');
+        process.exit(0); // 0 indicates success
     }
+    console.log(green,bold,"\r✅ All files exist");
     exec('make', (error, stdout, stderr) => {
+        //console.log("\r")
+        console.log(blue, bold,"\r⚙️  Executing make ...")
         if (error) {
-            console.error(bold, `Error: \n ${error.message}`);
+            console.error(`Error: \n ${error.message}`);
             return;
         }
         if (stderr) {
@@ -87,13 +120,15 @@ checkFilesExist(filesToCheck).then((err) => {
             return;
         }
         if (stdout)
-            console.log(`WORKING..`);
-        console.log(green, bold, "sucess!");
-        console.log("...");
-        exec('make clean', (error, stdout, stderr) => { })
-        exec('gcc -Wall -Wextra -Werror tests/main.c libft.a -lbsd -fsanitize=address', (error, stdout, stderr) => {
+        {}
+        console.log(green, bold, "\r✅ sucess!");
+        exec('make clean', (error, stdout, stderr) => {
+         })
+        console.log(blue, bold,"\r⚙️  Cleaning...");
+        console.log(blue, bold,"\r⚙️  Compiling...");
+        exec('gcc -Wall -Wextra -Werror tests/main.c ' + allTestsFunctionsCommand + 'libft.a -lbsd -fsanitize=address', (error, stdout, stderr) => {
             if (error) {
-                console.error(bold, `Error: \n ${error.message}`);
+                console.error(bold, `\rError: \n${error.message}`);
                 return;
             }
             if (stderr) {
@@ -102,8 +137,8 @@ checkFilesExist(filesToCheck).then((err) => {
             }
             if (stdout)
                 console.log(`${stdout}`);
-            console.log(green, bold, "Compiled!");
-            console.log("Running...");
+            console.log(green,"\r✅ Compiled!");
+            console.log(blue,"\r⚙️  Running...");
             exec('./a.out -f', (error, stdout, stderr) => {
                 if (error) {
                     console.error(`Error: ${error.message}`);
@@ -118,6 +153,6 @@ checkFilesExist(filesToCheck).then((err) => {
             });
         });
     });
-    
+
 
 })

@@ -5,6 +5,7 @@
 *.d
 
 #js
+/node_modules
 
 # Object files
 *.o
