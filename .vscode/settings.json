@@ -64,7 +64,8 @@
     "ctype.h": "c",
     "string.h": "c",
     "stdio.h": "c",
-    "stdlib.h": "c"
+    "stdlib.h": "c",
+    "string": "c"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }

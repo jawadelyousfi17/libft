@@ -26,6 +26,9 @@ const filesToCheck = [
   'ft_strlcpy.c',
   'ft_strnstr.c',
   'ft_tolower.c',
+  'ft_substr.c',
+  'ft_strjoin.c',
+  'ft_strtrim.c',
   'Makefile',
 ];
 
@@ -49,7 +52,11 @@ const testFunctionsFiles = [
   'test_ft_memset.c',
   'test_ft_memcmp.c',
   'test_ft_memcpy.c',
-  'test_ft_memmove.c'
+  'test_ft_memmove.c',
+  'test_ft_substr.c',
+  'test_ft_strjoin.c',
+  'test_ft_strtrim.c'
+
 ]
 const pathToTestsFunction = 'tests/test_functions/'
 let allTestsFunctionsCommand = '';
@@ -143,6 +150,7 @@ async function start(choice, makeFileChoice) {
           console.log(green, "\r✅ Compiled!");
           console.log(blue, "\r⚙️  Running...");
           exec('./a.out -f', (error, stdout, stderr) => {
+            console.log(blue, "\r⚙️  Running...");
             // if (error) {
             //   console.error(`Error: ${error.message}`);
             //   return;
@@ -242,10 +250,9 @@ console.log(blue, '\r', `
   "If you encounter any issues or bugs,\n",
   "please report them on the GitHub page.\n");
 
-if (os.platform == 'win32')
-{
+if (os.platform == 'win32') {
   console.log("❌ Sorry, this can't be run on Windows.\nPlease use a 🐧 Unix-based system like Linux or macOS.");
-  console.log(reset,"\rFor Windows users, you can install WSL (Windows Subsystem for Linux) to run Unix-based commands: ",blue,"https://learn.microsoft.com/en-us/windows/wsl/install",reset)
+  console.log(reset, "\rFor Windows users, you can install WSL (Windows Subsystem for Linux) to run Unix-based commands: ", blue, "https://learn.microsoft.com/en-us/windows/wsl/install", reset)
   process.exit(0);
 }
 
@@ -257,7 +264,7 @@ isLibbsdInstalled((isInstalled) => {
     process.exit(0);
   }
   console.log(bold, blue, '\r=== Please select an option or press ENTER for default ==== ');
-  console.log(reset, '\r1. Compile with ', bold, '-fsanitize=address ',yellow,'( default )');
+  console.log(reset, '\r1. Compile with ', bold, '-fsanitize=address ', yellow, '( default )');
   console.log(reset, '\r2. Compile ', bold, 'without -fsanitize=address');
   rl.question('Enter your choice (1 or 2): ', (answer) => {
     let flags = 1;
@@ -274,7 +281,7 @@ isLibbsdInstalled((isInstalled) => {
         break;
     }
     //console.log(bold, blue, '\r\n=== Please select an option or press ENTER for default ==== ');
-    console.log(yellow, '\r1. (default)',reset,' Run ', bold, 'make', reset, 'command to generate libft.a then Test it ? (All Funcions source must be included)');
+    console.log(yellow, '\r1. (default)', reset, ' Run ', bold, 'make', reset, 'command to generate libft.a then Test it ? (All Funcions source must be included)');
     console.log(reset, '\r2. You already have', bold, 'libft.a', reset, 'just test it', bold);
     rl.question('Enter your choice (1 or 2 or ENTER for default): ', answer => {
       switch (answer) {

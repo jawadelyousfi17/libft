@@ -7,7 +7,7 @@ void ft_bzero(void *s, size_t n)
     index = 0;
     while (index < n)
     {
-       ((char*)s)[index] = '\0';
+       ((unsigned char*)s)[index] = '\0';
        index++;
     }
     

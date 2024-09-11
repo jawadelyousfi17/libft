@@ -31,7 +31,13 @@ void loading_effect()
 
 int main(int ac, char *av[])
 {
-    test_ft_calloc();
+    
+    // test_ft_strtrim();
+    (void) ac;
+    (void) av;
+    //test_ft_strjoin();
+    // test_ft_substr();
+    //test_ft_calloc();
     // test_ft_strdup();
     //test_ft_memchr();
     //test_ft_bzero();
