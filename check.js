@@ -29,6 +29,8 @@ const filesToCheck = [
   'ft_substr.c',
   'ft_strjoin.c',
   'ft_strtrim.c',
+  'ft_split.c',
+  'ft_itoa.c',
   'Makefile',
 ];
 
@@ -55,7 +57,9 @@ const testFunctionsFiles = [
   'test_ft_memmove.c',
   'test_ft_substr.c',
   'test_ft_strjoin.c',
-  'test_ft_strtrim.c'
+  'test_ft_strtrim.c',
+  'test_ft_itoa.c',
+  'test_ft_split.c'
 
 ]
 const pathToTestsFunction = 'tests/test_functions/'

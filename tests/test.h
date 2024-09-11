@@ -26,3 +26,5 @@ void test_ft_calloc();
 void test_ft_substr();
 void test_ft_strjoin();
 void test_ft_strtrim();
+void test_ft_split();
+void test_ft_itoa();

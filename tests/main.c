@@ -31,7 +31,8 @@ void loading_effect()
 
 int main(int ac, char *av[])
 {
-    
+    test_ft_itoa();
+    //test_ft_split();
     // test_ft_strtrim();
     (void) ac;
     (void) av;
