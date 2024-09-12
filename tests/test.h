@@ -28,3 +28,5 @@ void test_ft_strjoin();
 void test_ft_strtrim();
 void test_ft_split();
 void test_ft_itoa();
+void test_ft_strmapi();
+void test_ft_striteri();
