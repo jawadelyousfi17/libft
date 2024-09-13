@@ -9,7 +9,6 @@ char *ft_strnstr(const char *big, const char *little, size_t len)
     {
         return ((char *)big);
     }
-
     little_len = ft_strlen(little);
     index = 0;
     while (*big && index <= len - little_len)

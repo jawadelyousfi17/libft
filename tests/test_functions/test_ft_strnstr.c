@@ -25,6 +25,7 @@ void test_ft_strnstr()
     //        "\033[0m\n"); // Cyan
     // init
     assert(strnstr("Hello", "Hel", 5) == ft_strnstr("Hello", "Hel", 5));
+    //assert(strnstr("", "Hel", 0) == ft_strnstr("", "Hel", 0));
     assert(strnstr("1337 is great", "is bad", 12) == strnstr("1337 is great", "is bad", 12));
     assert(strnstr("abcdef", "cd", 6) == ft_strnstr("abcdef", "cd", 6));
     assert(strnstr("abcdef", "gh", 6) == ft_strnstr("abcdef", "gh", 6));
