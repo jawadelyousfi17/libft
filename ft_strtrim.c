@@ -7,9 +7,7 @@ int is_char_set(char c, char const *set)
     while (*set)
     {
         if (*set == c)
-        {
             return (1);
-        }
         set++;
     }
     return (0);
@@ -24,29 +22,19 @@ char *ft_strtrim(char const *s1, char const *set)
     size_t s1_len;
 
     if (!s1)
-    {
         return (NULL);
-    }
     if (!set || !*set)
-    {
         return (ft_strdup(s1));
-    }
     s1_len = ft_strlen(s1);
     index = 0;
     while (s1[index] && is_char_set(s1[index], set))
-    {
         index++;
-    }
     if (index == s1_len)
-    {
         return (ft_strdup(""));
-    }
     start = index;
     index = s1_len - 1;
     while (index > start && is_char_set(s1[index], set))
-    {
         index--;
-    }
     end = index;
     str = ft_substr(s1, start, end - start + 1);
     return (str);
